@@ -6,7 +6,7 @@ This repo holds the browser prototype used to test the rules and balance before 
 
 ## Play it
 
-Play online at **https://khal33d-hub.github.io/ludo-go/**, or open `index.html` in any browser. It's a single file with no build step. Play pass-and-play with a friend, or set Yellow to the bot.
+Play online at **https://khal33d-hub.github.io/Ludo-Go/**, or open `index.html` in any browser. It's a single file with no build step. Play pass-and-play with a friend, or set Yellow to the bot.
 
 ## Game types
 
