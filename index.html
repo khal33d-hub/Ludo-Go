@@ -1795,8 +1795,18 @@
       $('btn-rules').addEventListener('click', () => $('settings-card').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }));
       $('btn-host-game').addEventListener('click', hostGame);
       $('btn-join-game').addEventListener('click', joinGame);
-      $('btn-throw').addEventListener('click', () => { if (S.phase === 'over') newGame(nextFirst); else doRoll(); });
-      $('btn-rematch').addEventListener('click', () => newGame(nextFirst));
+      $('btn-throw').onclick = () => {
+        if (S.phase === 'over') {
+          busy = false;
+          newGame(nextFirst);
+        } else {
+          doRoll();
+        }
+      };
+      $('btn-rematch').onclick = () => {
+        busy = false; // Emergency unlock for the race condition
+        newGame(nextFirst);
+      };
       $('btn-close').addEventListener('click', () => { $('overlay').hidden = true; });
       $('btn-sim').addEventListener('click', runSim);
       $('btn-reset-tally').addEventListener('click', () => { store('ludogo-tally-v1', null); renderTally(); });
