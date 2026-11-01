@@ -1304,6 +1304,7 @@
           if (payload.new.game_state && !busy) {
             S = payload.new.game_state;
             cfg = S.cfg;
+            $('overlay').hidden = true; // <-- Instantly drops the modal if the opponent hits Rematch
             syncInputs();
             renderAll();
           }
@@ -1398,6 +1399,7 @@
         }, payload => {
           if (payload.new.game_state && !busy) {
             S = payload.new.game_state;
+            $('overlay').hidden = true; // <-- Instantly drops the modal if the opponent hits Rematch
             cfg = S.cfg;
             syncInputs();
             renderAll();
