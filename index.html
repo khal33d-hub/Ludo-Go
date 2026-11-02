@@ -1240,6 +1240,7 @@
       btn.textContent = 'Creating session...';
 
       currentGameCode = generateGameCode();
+      localStorage.setItem('ludo_last_code', currentGameCode);
       isHost = true;
 
       const startingState = newState(engineCfg(cfg), 0, [names[0], 'Waiting...']);
@@ -1361,6 +1362,7 @@
       }
 
       currentGameCode = codeInput;
+      localStorage.setItem('ludo_last_code', currentGameCode);
 
       // SMART RESUME: Check if the person joining typed the Host's name
       if (names[1] === data.player_red_name) {
@@ -1792,6 +1794,11 @@
         if (S) S.players[i].name = names[i];
         renderStrip(i); renderTray(); renderTally();
       }));
+      // Auto-fill the last played game code if it exists
+      const savedCode = localStorage.getItem('ludo_last_code');
+      if (savedCode) {
+        $('join-code-input').value = savedCode;
+      }
       $('btn-apply').addEventListener('click', () => newGame(0));
       $('btn-new').addEventListener('click', () => { $('lobby-overlay').hidden = false; });
       $('btn-rules').addEventListener('click', () => $('settings-card').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }));
